@@ -1,17 +1,95 @@
-body {
-    font-family: Arial, sans-serif;
+
+.heading {
     display: flex;
-    flex-direction: column;
+    background-color: #4d8ab5;
+    color: white;
+    font-weight: bold;
+    height: 75px;
     align-items: center;
-    padding-top: 50px;
+    justify-content: center;
 }
 
-#searchInput, #searchButton {
-    margin: 10px;
-    padding: 8px;
+div.search {
+    margin: 0 auto;
+    width: 75%;
+    align-content: center;
+}
+
+
+.hintText {
+    font-size: 0.9em;
+    color: #666;
+    margin-bottom: 10px;
+}
+
+form {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+#superHeroName {
+    flex: 1;
+    padding: 10px;
+    font-size: 1em;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.btn {
+    padding: 10px 20px;
+    font-size: 1em;
+    color: #fff;
+    background-color: #c40818;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.btn:hover {
+    background-color: #ba1313;
+}
+
+.resultHeading {
+    font-size: 1.2em;
+    color: #010101;
+    margin-bottom: 10px;
+}
+
+hr {
+    border: none;
+    border-top: 1px solid #ddd;
+    margin-bottom: 20px;
 }
 
 #result {
-    margin-top: 20px;
-    font-size: 18px;
+    padding: 10px;
+    border: 1px solid #eee;
+    border-radius: 4px;
+    background-color: #fafafa;
+}
+
+.alias {
+    font-size: 1.2em;
+    color: #555;
+}
+
+.name {
+    font-size: 1.5em;
+    font-weight: bold;
+    color: #333;
+    margin-top: 5px;
+}
+
+.biography {
+    font-size: 1em;
+    color: #666;
+    margin-top: 10px;
+}
+
+.not-found {
+    font-size: 1em;
+    color: #e63946;
+    font-weight: bold;
 }
