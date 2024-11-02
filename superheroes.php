@@ -62,34 +62,33 @@ $superheroes = [
       "biography" => "Notably powerful, Wanda Maximoff has fought both against and with the Avengers, attempting to hone her abilities and do what she believes is right to help the world.",
   ], 
 ];
+?>
+<?php
 
-$query = isset($_POST['superName']) ? trim($_POST['superName']) : '';
-
-
-if ($query) {
-    $query = htmlspecialchars($query, ENT_QUOTES, 'UTF-8');
-    $found = false;
+if (empty($_POST["superName"])) {
+    // Display all superheroes when no search value is provided
+    echo "<ul>";
+    foreach ($superheroes as $superhero) {
+        echo "<li>" . htmlspecialchars($superhero['alias']) . "</li>";
+    }
+    echo "</ul>";
+} else {
+    $searchVal = filter_input(INPUT_POST, "superName", FILTER_SANITIZE_STRING);
+    $found = false; // Track if a match is found
 
     foreach ($superheroes as $superhero) {
-        if (strcasecmp($superhero['name'], $query) === 0 || strcasecmp($superhero['alias'], $query) === 0) {
+        if (strcasecmp($superhero['name'], $searchVal) === 0 || strcasecmp($superhero['alias'], $searchVal) === 0) {
             // Superhero found, display details
-            echo "<h3>{$superhero['alias']}</h3>";
-            echo "<h4>{$superhero['name']}</h4>";
-            echo "<p>{$superhero['biography']}</p>";
+            echo "<h3>" . htmlspecialchars(strtoupper($superhero['alias'])) . "</h3>";
+            echo "<h4>A.K.A " . htmlspecialchars(strtoupper($superhero['name'])) . "</h4>";
+            echo "<p>" . htmlspecialchars($superhero['biography']) . "</p>";
             $found = true;
-            break;
+            break; // Stop loop if match is found
         }
     }
 
-    // If no superhero is found
     if (!$found) {
-        echo "<p>Superhero not found</p>";
+        echo "<p style='color: red;'>SUPERHERO NOT FOUND</p>";
     }
-} else {
-    echo "<ul>";
-    foreach ($superheroes as $superhero) {
-        echo "<li>{$superhero['alias']}</li>";
-    }
-    echo "</ul>";
 }
 ?>
